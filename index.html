@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>dani's page</title>
+
+<style>
+@font-face{
+    font-family:"BB Anonym Pro";
+    src:url("https://raw.githubusercontent.com/danieltorres-mhcs/assets/main/BBAnonymPro-Bold.ttf") format("truetype");
+    font-weight:700;
+    font-style:normal;
+    font-display:swap;
+}
+
+:root{
+    --content-width:720px;
+    --main-text:#121212;
+    --body-text:#3A3A3A;
+    --tiny-text:#505050;
+    --card-background:rgba(255,255,255,.56);
+    --card-border:rgba(18,18,18,.10);
+    --radius:20px;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    width:100%;
+    min-height:100%;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:"BB Anonym Pro",sans-serif;
+    color:var(--body-text);
+    overflow-x:hidden;
+}
+
+.background{
+    position:fixed;
+    inset:0;
+    width:100vw;
+    height:100vh;
+    z-index:-2;
+    background:
+        linear-gradient(
+            135deg,
+            #F6F9FF 12.5%,
+            #EAF4FC 37.5%,
+            #D4CEDB 62.5%,
+            #FEF4F4 87.5%
+        );
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+.background::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(
+            circle at 20% 10%,
+            rgba(255,255,255,.25),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 90%,
+            rgba(255,255,255,.12),
+            transparent 40%
+        );
+    pointer-events:none;
+}
+
+.page{
+    width:100%;
+    max-width:var(--content-width);
+    margin:0 auto;
+    padding:36px 20px 60px;
+}
+
+.main-card{
+    width:100%;
+    padding:24px;
+    background:var(--card-background);
+    border:1px solid var(--card-border);
+    border-radius:var(--radius);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    box-shadow:
+        0 18px 50px rgba(0,0,0,.10);
+}
+
+.profile{
+    width:100%;
+    display:flex;
+    align-items:center;
+    margin-bottom:28px;
+}
+
+.profile-picture-wrap{
+    width:106px;
+    height:106px;
+    position:relative;
+    flex:none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.profile-picture{
+    width:100px;
+    height:100px;
+    min-width:100px;
+    border-radius:50% !important;
+    object-fit:cover;
+    display:block;
+}
+
+.profile-picture-wrap::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:5;
+    background:
+        conic-gradient(
+            from -90deg,
+            #ff218c 0deg 60deg,
+            #ffd800 60deg 120deg,
+            #21b1ff 120deg 180deg,
+            #000000 180deg 216deg,
+            #a7a7a7 216deg 252deg,
+            #ffffff 252deg 288deg,
+            #a7d379 288deg 324deg,
+            #3da542 324deg 360deg
+        );
+    -webkit-mask:
+        radial-gradient(
+            circle,
+            transparent 0 50px,
+            #000 50px 53px,
+            transparent 53px
+        );
+    mask:
+        radial-gradient(
+            circle,
+            transparent 0 50px,
+            #000 50px 53px,
+            transparent 53px
+        );
+}
+
+.profile-name{
+    margin-left:20px;
+    color:var(--main-text);
+    font-size:50px;
+    line-height:1.1;
+    font-weight:700;
+    letter-spacing:-.6px;
+}
+
+#content{
+    width:100%;
+}
+
+.content-item{
+    width:100%;
+    margin:0 0 22px;
+}
+
+.content-item:last-child{
+    margin-bottom:0;
+}
+
+.text-large{
+    color:var(--main-text);
+    font-size:32px;
+    line-height:1.15;
+    font-weight:700;
+    letter-spacing:-.7px;
+    text-align:center;
+}
+
+.text-medium{
+    color:var(--body-text);
+    font-size:17px;
+    line-height:1.65;
+    text-align:center;
+}
+
+.text-small{
+    color:var(--tiny-text);
+    font-size:13px;
+    line-height:1.55;
+    text-align:center;
+}
+
+.live-time{
+    margin-top:-12px;
+    color:#666666;
+    font-size:13px;
+    line-height:1.5;
+    text-align:center;
+}
+
+.live-time-value{
+    color:#303030;
+    font-weight:700;
+}
+
+.markdown{
+    color:var(--body-text);
+    font-size:16px;
+    line-height:1.7;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3{
+    color:var(--main-text);
+    margin:0 0 12px;
+    line-height:1.2;
+}
+
+.markdown h1{
+    font-size:28px;
+}
+
+.markdown h2{
+    font-size:23px;
+}
+
+.markdown h3{
+    font-size:19px;
+}
+
+.markdown p{
+    margin:0 0 14px;
+}
+
+.markdown strong{
+    color:var(--main-text);
+    font-weight:700;
+}
+
+.markdown em{
+    font-style:italic;
+}
+
+.markdown del{
+    opacity:.65;
+}
+
+.markdown a{
+    color:var(--main-text);
+    text-decoration:underline;
+    text-underline-offset:3px;
+}
+
+.markdown ul,
+.markdown ol{
+    margin:0 0 14px;
+    padding-left:24px;
+}
+
+.markdown li{
+    margin:4px 0;
+}
+
+.markdown code{
+    padding:3px 6px;
+    border-radius:6px;
+    background:rgba(0,0,0,.07);
+    font-size:.9em;
+}
+
+.markdown pre{
+    overflow-x:auto;
+    margin:14px 0;
+    padding:16px;
+    border-radius:12px;
+    background:rgba(0,0,0,.08);
+}
+
+.markdown pre code{
+    padding:0;
+    background:none;
+}
+
+.markdown blockquote{
+    margin:14px 0;
+    padding:8px 16px;
+    border-left:3px solid rgba(18,18,18,.25);
+    color:var(--tiny-text);
+}
+
+.content-image{
+    width:100%;
+    height:auto;
+    display:block;
+    border-radius:14px;
+    object-fit:cover;
+}
+
+.slideshow{
+    position:relative;
+    width:100%;
+    aspect-ratio:16 / 9;
+    overflow:hidden;
+    border-radius:14px;
+    background:rgba(0,0,0,.04);
+}
+
+.slideshow-image{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+    border-radius:14px;
+    opacity:0;
+    transition:
+        opacity .7s ease-in-out;
+}
+
+.slideshow-image.active{
+    opacity:1;
+}
+
+.slide-arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:42px;
+    height:42px;
+    padding:0;
+    border:none;
+    border-radius:50%;
+    background:rgba(255,255,255,.78);
+    color:#121212;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    z-index:5;
+    box-shadow:
+        0 5px 18px rgba(0,0,0,.14);
+    transition:
+        transform .15s ease,
+        background .15s ease;
+}
+
+.slide-arrow svg{
+    width:16px;
+    height:16px;
+    display:block;
+    fill:currentColor;
+}
+
+.slide-arrow:hover{
+    background:#ffffff;
+}
+
+.slide-arrow:active{
+    transform:translateY(-50%) scale(.94);
+}
+
+.slide-arrow.left{
+    left:12px;
+}
+
+.slide-arrow.right{
+    right:12px;
+}
+
+.slide-counter{
+    position:absolute;
+    left:50%;
+    bottom:12px;
+    transform:translateX(-50%);
+    padding:5px 9px;
+    border-radius:999px;
+    background:rgba(255,255,255,.76);
+    color:var(--tiny-text);
+    font-size:11px;
+    line-height:1;
+    z-index:5;
+    pointer-events:none;
+}
+
+.links{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.link-button{
+    position:relative;
+    width:100%;
+    min-height:56px;
+    padding:10px 16px;
+    display:flex;
+    align-items:center;
+    text-decoration:none;
+    color:var(--main-text);
+    background:rgba(255,255,255,.48);
+    border:1px solid rgba(18,18,18,.08);
+    border-radius:14px;
+    transition:
+        transform .15s ease,
+        background .15s ease;
+}
+
+.link-button:hover{
+    background:rgba(255,255,255,.72);
+    transform:translateY(-1px);
+}
+
+.link-icon{
+    width:30px;
+    height:30px;
+    flex:none;
+    object-fit:contain;
+    border-radius:8px;
+}
+
+.link-text{
+    flex:1;
+    margin:0 40px 0 12px;
+    text-align:center;
+    font-size:15px;
+}
+
+.link-arrow{
+    position:absolute;
+    right:16px;
+    font-size:22px;
+    line-height:1;
+    color:var(--tiny-text);
+}
+
+.footer{
+    margin-top:24px;
+    color:var(--tiny-text);
+    font-size:11px;
+    text-align:center;
+}
+
+@media(max-width:600px){
+    .page{
+        padding:
+            20px 12px 40px;
+    }
+
+    .main-card{
+        padding:18px;
+        border-radius:18px;
+    }
+
+    .profile{
+        margin-bottom:24px;
+    }
+
+    .profile-picture-wrap{
+        width:88px;
+        height:88px;
+    }
+
+    .profile-picture{
+        width:82px;
+        height:82px;
+        min-width:82px;
+    }
+
+    .profile-name{
+        margin-left:16px;
+        font-size:27px;
+    }
+
+    .content-item{
+        margin-bottom:20px;
+    }
+
+    .text-large{
+        font-size:27px;
+    }
+
+    .text-medium{
+        font-size:16px;
+    }
+
+    .text-small{
+        font-size:12px;
+    }
+
+    .live-time{
+        font-size:12px;
+    }
+
+    .markdown{
+        font-size:15px;
+    }
+
+    .markdown h1{
+        font-size:25px;
+    }
+
+    .markdown h2{
+        font-size:21px;
+    }
+
+    .markdown h3{
+        font-size:18px;
+    }
+
+    .slide-arrow{
+        width:36px;
+        height:36px;
+    }
+
+    .slide-arrow svg{
+        width:13px;
+        height:13px;
+    }
+
+    .slide-arrow.left{
+        left:8px;
+    }
+
+    .slide-arrow.right{
+        right:8px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div class="page">
+
+    <main class="main-card">
+
+        <div class="profile">
+
+            <div class="profile-picture-wrap">
+
+                <img
+                    class="profile-picture"
+                    src="https://raw.githubusercontent.com/danieltorres-mhcs/assets/refs/heads/main/IMG_1705.jpeg"
+                    alt="my profile picture"
+                >
+
+            </div>
+
+            <div class="profile-name">
+                Dani
+            </div>
+
+        </div>
+
+        <div id="content"></div>
+
+        <div class="footer">
+            Made with HTML
+        </div>
+
+    </main>
+
+</div>
+
+<script>
+
+const CONTENT = [
+
+{
+    type:"large",
+    text:"Hi, i am a student from Parañaque 🇵🇭."
+},
+
+{
+    type:"medium",
+    text:"I am Dani (Daniel) and i study in Makati. I am half American half Filipino with me being American from my dad's side 🇺🇸🇵🇭. My favorite animal is the otter 🦦 and i have 2 sisters."
+},
+
+{
+    type:"medium",
+    text:"I have travelled to 6 countries outside my own. (🇺🇸🇭🇰🇯🇵🇬🇺🇹🇼🇰🇷)"
+},
+
+{
+    type:"medium",
+    text:"I have astigmatism and asthma but that's usually not a problem for me. I don't like coding but i code anyways for the fun of it."
+},
+
+{
+    type:"medium",
+    text:"I am usually online from 5PM to 10PM."
+},
+
+{
+    type:"live-time"
+},
+
+{
+    type:"large",
+    text:"💬 I'm also on..."
+},
+
+{
+    type:"links",
+    items:[
+        {
+            text:"Youtube",
+            url:"https://youtube.com/@dan67bbbbbbb",
+            icon:"https://cdn.simpleicons.org/youtube/COLOR"
+        },
+        {
+            text:"Discord",
+            url:"https://discord.com/users/1548596832098058331",
+            icon:"https://cdn.simpleicons.org/discord/COLOR"
+        },
+        {
+            text:"GitHub",
+            url:"https://github.com/danieltorres-mhcs",
+            icon:"https://cdn.simpleicons.org/github"
+        },
+        {
+            text:"TikTok",
+            url:"https://www.tiktok.com/@danieatspizza",
+            icon:"https://cdn.simpleicons.org/tiktok/COLOR"
+        },
+        {
+            text:"Snapchat",
+            url:"https://snapchat.com/t/4lIViBon",
+            icon:"https://cdn.simpleicons.org/snapchat/COLOR"
+        },
+        {
+            text:"Instagram",
+            url:"https://cdn.simpleicons.org/instagram/COLOR"
+        },
+        {
+            text:"E-mail (personal)",
+            url:"mailto:never-gonna@give-you-up.l.cd",
+            icon:"https://cdn.simpleicons.org/gmail/COLOR"
+        }
+    ]
+},
+
+{
+    type:"large",
+    text:"👨‍💻 I've made..."
+},
+
+{
+    type:"links",
+    items:[
+        {
+            text:"Koobit Cracker",
+            url:"https://danieltorres-mhcs.github.io/koobitcracker/",
+            icon:"https://3.bp.blogspot.com/-n4NhLXSqI1Y/UJTvnxLxWHI/AAAAAAAAARY/CQgGS3mYE2o/s1600/Black_Diamond_with_Question_Mark.png"
+        },
+        {
+            text:"Personal Drive",
+            url:"https://danieltorres-mhcs.github.io/home/",
+            icon:"https://cdn.simpleicons.org/googledrive/COLOR"
+        },
+        {
+            text:"FlibidooSearch",
+            url:"https://flibidoo-search.devs.surf/",
+            icon:"https://raw.githubusercontent.com/danieltorres-mhcs/assets/refs/heads/main/flibidoo.PNG"
+        }
+    ]
+},
+
+{
+    type:"large",
+    text:"🔍 Check out.."
+},
+
+{
+    type:"links",
+    items:[
+        {
+            text:"Delphi.tools",
+            url:"https://delphi.tools",
+            icon:"https://raw.githubusercontent.com/danieltorres-mhcs/assets/refs/heads/main/IMG_2125.png"
+        },
+        {
+            text:"FeralUI's Gradient builder",
+            url:"https://feralui.dev/gradients",
+            icon:"https://feralui.dev/favicon.ico"
+        }
+    ]
+}
+
+];
+
+function escapeHTML(text){
+
+    return text
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+function parseMarkdown(source){
+
+    let text = escapeHTML(source);
+
+    const codeBlocks = [];
+
+    text = text.replace(
+        /```([\s\S]*?)```/g,
+
+        function(_,code){
+
+            const index =
+                codeBlocks.length;
+
+            codeBlocks.push(
+                "<pre><code>" +
+                code.trim() +
+                "</code></pre>"
+            );
+
+            return `%%CODEBLOCK${index}%%`;
+        }
+    );
+
+    text = text.replace(
+        /^### (.*)$/gm,
+        "<h3>$1</h3>"
+    );
+
+    text = text.replace(
+        /^## (.*)$/gm,
+        "<h2>$1</h2>"
+    );
+
+    text = text.replace(
+        /^# (.*)$/gm,
+        "<h1>$1</h1>"
+    );
+
+    text = text.replace(
+        /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
+
+        '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'
+    );
+
+    text = text.replace(
+        /\*\*(.+?)\*\*/g,
+        "<strong>$1</strong>"
+    );
+
+    text = text.replace(
+        /(?<!\*)\*([^*]+)\*(?!\*)/g,
+        "<em>$1</em>"
+    );
+
+    text = text.replace(
+        /~~(.+?)~~/g,
+        "<del>$1</del>"
+    );
+
+    text = text.replace(
+        /`([^`]+)`/g,
+        "<code>$1</code>"
+    );
+
+    text = text.replace(
+        /^(?:- .*(?:\n|$))+/gm,
+
+        function(block){
+
+            const items =
+                block
+                    .trim()
+                    .split("\n")
+                    .map(
+                        line =>
+                            "<li>" +
+                            line.replace(/^- /,"") +
+                            "</li>"
+                    )
+                    .join("");
+
+            return "<ul>" + items + "</ul>";
+        }
+    );
+
+    text = text.replace(
+        /^&gt; (.*)$/gm,
+        "<blockquote>$1</blockquote>"
+    );
+
+    const lines =
+        text.split(/\n/);
+
+    const output = [];
+
+    let paragraph = [];
+
+    function flushParagraph(){
+
+        if(!paragraph.length){
+            return;
+        }
+
+        const value =
+            paragraph
+                .join("<br>")
+                .trim();
+
+        if(value){
+
+            output.push(
+                "<p>" +
+                value +
+                "</p>"
+            );
+
+        }
+
+        paragraph = [];
+    }
+
+    for(const line of lines){
+
+        const trimmed =
+            line.trim();
+
+        if(!trimmed){
+
+            flushParagraph();
+
+            continue;
+        }
+
+        if(
+            trimmed.startsWith("<h1>") ||
+            trimmed.startsWith("<h2>") ||
+            trimmed.startsWith("<h3>") ||
+            trimmed.startsWith("<ul>") ||
+            trimmed.startsWith("<blockquote>") ||
+            trimmed.startsWith("<pre>") ||
+            trimmed.startsWith("%%CODEBLOCK")
+        ){
+
+            flushParagraph();
+
+            output.push(trimmed);
+
+            continue;
+        }
+
+        paragraph.push(trimmed);
+    }
+
+    flushParagraph();
+
+    let result =
+        output.join("\n");
+
+    result =
+        result.replace(
+            /%%CODEBLOCK(\d+)%%/g,
+
+            function(_,index){
+
+                return codeBlocks[
+                    Number(index)
+                ];
+
+            }
+        );
+
+    return result;
+}
+
+function updateParanaqueTime(){
+
+    const timeElement =
+        document.getElementById("paranaque-time");
+
+    if(!timeElement){
+        return;
+    }
+
+    const now =
+        new Date();
+
+    const utcMilliseconds =
+        now.getTime() +
+        now.getTimezoneOffset() * 60000;
+
+    const paranaqueTime =
+        new Date(
+            utcMilliseconds +
+            8 * 60 * 60 * 1000
+        );
+
+    const hours =
+        String(
+            paranaqueTime.getHours()
+        ).padStart(2,"0");
+
+    const minutes =
+        String(
+            paranaqueTime.getMinutes()
+        ).padStart(2,"0");
+
+    timeElement.textContent =
+        `${hours}:${minutes}`;
+}
+
+const content =
+    document.getElementById("content");
+
+CONTENT.forEach(item=>{
+
+    const element =
+        document.createElement("div");
+
+    element.className =
+        "content-item";
+
+    if(item.type === "large"){
+
+        element.innerHTML =
+            `<div class="text-large">${item.text}</div>`;
+
+    }
+
+    else if(item.type === "medium"){
+
+        element.innerHTML =
+            `<div class="text-medium">${item.text}</div>`;
+
+    }
+
+    else if(item.type === "small"){
+
+        element.innerHTML =
+            `<div class="text-small">${item.text}</div>`;
+
+    }
+
+    else if(item.type === "live-time"){
+
+        element.innerHTML = `
+            <div class="live-time">
+                It's
+                <span
+                    id="paranaque-time"
+                    class="live-time-value"
+                >--:--</span>
+                here in Parañaque.
+            </div>
+        `;
+
+    }
+
+    else if(item.type === "markdown"){
+
+        const markdown =
+            document.createElement("div");
+
+        markdown.className =
+            "markdown";
+
+        markdown.innerHTML =
+            parseMarkdown(item.text);
+
+        element.appendChild(markdown);
+
+    }
+
+    else if(item.type === "image"){
+
+        const image =
+            document.createElement("img");
+
+        image.className =
+            "content-image";
+
+        image.src =
+            item.src;
+
+        image.alt =
+            item.alt || "";
+
+        image.loading =
+            "lazy";
+
+        element.appendChild(image);
+
+    }
+
+    else if(item.type === "slideshow"){
+
+        const wrapper =
+            document.createElement("div");
+
+        wrapper.className =
+            "slideshow";
+
+        const images =
+            item.images.map(
+                (src,index)=>{
+
+                    const image =
+                        document.createElement("img");
+
+                    image.className =
+                        "slideshow-image";
+
+                    if(index === 0){
+
+                        image.classList.add(
+                            "active"
+                        );
+
+                    }
+
+                    image.src =
+                        src;
+
+                    image.alt =
+                        item.alt || "Slideshow";
+
+                    return image;
+                }
+            );
+
+        images.forEach(image=>{
+
+            wrapper.appendChild(image);
+
+        });
+
+        const previous =
+            document.createElement("button");
+
+        previous.className =
+            "slide-arrow left";
+
+        previous.type =
+            "button";
+
+        previous.setAttribute(
+            "aria-label",
+            "Previous slide"
+        );
+
+        previous.innerHTML = `
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+                aria-hidden="true"
+            >
+                <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 288 480 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-370.7 0 105.4-105.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.8-45.3 0l-160 160z"/>
+            </svg>
+        `;
+
+        const next =
+            document.createElement("button");
+
+        next.className =
+            "slide-arrow right";
+
+        next.type =
+            "button";
+
+        next.setAttribute(
+            "aria-label",
+            "Next slide"
+        );
+
+        next.innerHTML = `
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+                aria-hidden="true"
+            >
+                <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-105.4 105.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/>
+            </svg>
+        `;
+
+        const counter =
+            document.createElement("div");
+
+        counter.className =
+            "slide-counter";
+
+        counter.textContent =
+            `1 / ${images.length}`;
+
+        let current = 0;
+
+        function showSlide(index){
+
+            const nextIndex =
+                (index + images.length) %
+                images.length;
+
+            if(nextIndex === current){
+                return;
+            }
+
+            images[current]
+                .classList
+                .remove("active");
+
+            images[nextIndex]
+                .classList
+                .add("active");
+
+            current =
+                nextIndex;
+
+            counter.textContent =
+                `${current + 1} / ${images.length}`;
+        }
+
+        previous.addEventListener(
+            "click",
+            ()=>{
+                showSlide(current - 1);
+            }
+        );
+
+        next.addEventListener(
+            "click",
+            ()=>{
+                showSlide(current + 1);
+            }
+        );
+
+        setInterval(
+            ()=>{
+                showSlide(current + 1);
+            },
+            3000
+        );
+
+        wrapper.appendChild(previous);
+        wrapper.appendChild(next);
+        wrapper.appendChild(counter);
+        element.appendChild(wrapper);
+
+    }
+
+    else if(item.type === "links"){
+
+        const links =
+            document.createElement("div");
+
+        links.className =
+            "links";
+
+        item.items.forEach(link=>{
+
+            const anchor =
+                document.createElement("a");
+
+            anchor.className =
+                "link-button";
+
+            anchor.href =
+                link.url;
+
+            anchor.target =
+                "_blank";
+
+            anchor.rel =
+                "noopener noreferrer";
+
+            const icon =
+                document.createElement("img");
+
+            icon.className =
+                "link-icon";
+
+            icon.src =
+                link.icon || "";
+
+            icon.alt =
+                "";
+
+            const text =
+                document.createElement("div");
+
+            text.className =
+                "link-text";
+
+            text.textContent =
+                link.text;
+
+            const arrow =
+                document.createElement("div");
+
+            arrow.className =
+                "link-arrow";
+
+            arrow.innerHTML =
+                "›";
+
+            anchor.appendChild(icon);
+            anchor.appendChild(text);
+            anchor.appendChild(arrow);
+            links.appendChild(anchor);
+
+        });
+
+        element.appendChild(links);
+
+    }
+
+    content.appendChild(element);
+
+});
+
+updateParanaqueTime();
+
+setInterval(
+    updateParanaqueTime,
+    1000
+);
+
+const titleText = "dani’s page ";
+
+let i = 0;
+
+setInterval(() => {
+
+    document.title =
+        titleText.slice(i) +
+        titleText.slice(0, i);
+
+    i =
+        (i + 1) %
+        titleText.length;
+
+}, 250);
+
+</script>
+
+</body>
+</html>
